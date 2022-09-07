@@ -24,6 +24,15 @@ class Form extends Component {
             id: Date.now(),
             ...this.state
         }
+        // fetch('http://localhost:3001/api/v1/tricks'), {
+        //     method: 'POST',
+        //     headers: {'Content-Type': 'application/json'},
+        //     body: JSON.stringify({ stance: newTrick.stance, name: newTrick.name, obstacle: newTrick.obstacle, tutorial: newTrick.tutorial })
+        // }
+        // .then(response => response.json())
+        // .then(this.props.addTrick(newTrick))
+        // .then(this.clearInputs())
+        // .then(this.props.fetchTricks())
         this.props.addTrick(newTrick)
         this.clearInputs()
     }
