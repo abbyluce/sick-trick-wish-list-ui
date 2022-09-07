@@ -23,7 +23,6 @@ class App extends Component {
       }
     })
     .then(data => {
-      console.log(data)
       this.setState({ tricks: data })
     })
     .catch(error => {
@@ -41,8 +40,8 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Sick Trick Wish List</h1>
+        {this.state.error && <h2>{this.state.errorMessage}</h2>}
         <Form addTrick={this.addTrick}/>
-        {(this.state.error && <h1>{this.state.errorMessage}</h1>)}
         <TricksContainer tricks={this.state.tricks}/>
       </div>
     );
