@@ -14,10 +14,6 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    this.fetchTricks()
-  }
-
-  fetchTricks = () => {
     fetch('http://localhost:3001/api/v1/tricks')
     .then(response => {
       if (!response.ok) {
@@ -35,11 +31,17 @@ class App extends Component {
     })
   }
 
+  addTrick = newTrick => {
+    this.setState({
+      tricks: [...this.state.tricks, newTrick]
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <h1>Sick Trick Wish List</h1>
-        <Form />
+        <Form addTrick={this.addTrick}/>
         {(this.state.error && <h1>{this.state.errorMessage}</h1>)}
         <TricksContainer tricks={this.state.tricks}/>
       </div>
