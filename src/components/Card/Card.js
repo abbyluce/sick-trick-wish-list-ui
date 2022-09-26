@@ -1,7 +1,7 @@
 import React from 'react'
 import './Card.css'
 
-const Card = ( {stance, trickName, obstacle, tutorial, id} ) => {
+const Card = ( {deleteTrick, stance, trickName, obstacle, tutorial, id} ) => {
     return (
         <div className="card">
             <p className={id}>
@@ -15,6 +15,7 @@ const Card = ( {stance, trickName, obstacle, tutorial, id} ) => {
                 <br></br>
                 {tutorial}
             </p>
+            <button onClick={() => deleteTrick(id)} className='delete'>DELETE</button>
         </div>
     )
 }

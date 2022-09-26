@@ -34,9 +34,17 @@ class App extends Component {
     this.fetchTricks()
   }
 
-  addTrick = newTrick => {
-    this.setState({
-      tricks: [...this.state.tricks, newTrick]
+  addTrick = () => {
+    this.fetchTricks()
+  }
+
+  deleteTrick = id => {
+    fetch(`http://localhost:3001/api/v1/tricks/${id}`, {
+      method: 'DELETE'
+    })
+    .then(response => response.json())
+    .then(data => {
+      this.setState({ tricks: data })
     })
   }
 
@@ -46,7 +54,7 @@ class App extends Component {
         <h1>Sick Trick Wish List</h1>
         {this.state.error && <h2>{this.state.errorMessage}</h2>}
         <Form addTrick={this.addTrick} fetchTricks={this.fetchTricks}/>
-        <TricksContainer tricks={this.state.tricks}/>
+        <TricksContainer deleteTrick={this.deleteTrick} tricks={this.state.tricks}/>
       </div>
     );
   }

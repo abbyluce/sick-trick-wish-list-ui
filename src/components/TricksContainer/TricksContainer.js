@@ -2,7 +2,7 @@ import React from 'react'
 import Card from '../Card/Card'
 import './TricksContainer.css'
 
-const TricksContainer = ( {tricks} ) => {
+const TricksContainer = ( {tricks, deleteTrick} ) => {
     const trickCards = tricks.map(trick => {
         return <Card 
             stance={trick.stance} 
@@ -11,6 +11,7 @@ const TricksContainer = ( {tricks} ) => {
             tutorial={trick.tutorial}
             id={trick.id}
             key={trick.id}
+            deleteTrick={deleteTrick}
             />
     })
 
